@@ -5,3 +5,5 @@ liblua.a
 lua
 
 luac
+
+*.luac

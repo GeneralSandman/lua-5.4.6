@@ -9,3 +9,24 @@ further information about Lua, see doc/readme.html.
 lua 源码的下载地址
 
 https://www.lua.org/ftp/lua-5.4.6.tar.gz
+
+
+
+--------------------------------
+
+Lua 命令行使用方法
+
+1. 指定 输出文件名, 输出字节码
+   
+luac  -o ./test/test-1.luac ./test/test-1.lua
+
+2. 解析字节码 (输入文件可以是Lua源码, 也可以是Lua字节码)
+
+-l -l: 输出详细信息
+
+luac -l -l ./test/test-1.luac
+
+
+3. 执行  (输入文件可以是Lua源码, 也可以是Lua字节码)
+
+lua ./test/test-1.lua
