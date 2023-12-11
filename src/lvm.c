@@ -1917,7 +1917,7 @@ returning: /* trap already set */
             }
             vmcase(OP_CLOSURE) {
                 StkId  ra = RA(i);
-                Proto* p  = cl->p->p[GETARG_Bx(i)];
+                Proto* p  = cl->p->sub_p[GETARG_Bx(i)];
                 halfProtect(pushclosure(L, p, cl->upvals, base, ra));
                 checkGC(L, ra + 1);
                 vmbreak;

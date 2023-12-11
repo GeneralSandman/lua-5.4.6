@@ -190,14 +190,14 @@ static void loadConstants(LoadState* S, Proto* f) {
 static void loadProtos(LoadState* S, Proto* f) {
     int i;
     int n    = loadInt(S);
-    f->p     = luaM_newvectorchecked(S->L, n, Proto*);
+    f->sub_p = luaM_newvectorchecked(S->L, n, Proto*);
     f->sizep = n;
     for (i = 0; i < n; i++)
-        f->p[i] = NULL;
+        f->sub_p[i] = NULL;
     for (i = 0; i < n; i++) {
-        f->p[i] = luaF_newproto(S->L);
-        luaC_objbarrier(S->L, f, f->p[i]);
-        loadFunction(S, f->p[i], f->source);
+        f->sub_p[i] = luaF_newproto(S->L);
+        luaC_objbarrier(S->L, f, f->sub_p[i]);
+        loadFunction(S, f->sub_p[i], f->source);
     }
 }
 

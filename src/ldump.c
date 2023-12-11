@@ -140,7 +140,7 @@ static void dumpProtos(DumpState* D, const Proto* f) {
     int n = f->sizep;
     dumpInt(D, n);
     for (i = 0; i < n; i++)
-        dumpFunction(D, f->p[i], f->source);
+        dumpFunction(D, f->sub_p[i], f->source);
 }
 
 
@@ -214,6 +214,7 @@ static void dumpHeader(DumpState* D) {
 /*
 ** dump Lua function as precompiled chunk
 */
+// TIP: 生成字节码二进制文件
 int luaU_dump(lua_State* L, const Proto* f, lua_Writer w, void* data,
               int strip) {
     DumpState D;

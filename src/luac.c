@@ -26,7 +26,6 @@
 #include "lundump.h"
 
 static void PrintFunction(const Proto* f, int full);
-#define luaU_print PrintFunction
 
 #define PROGNAME "luac"        /* default program name */
 #define OUTPUT PROGNAME ".out" /* default output file */
@@ -141,9 +140,9 @@ static const Proto* combine(lua_State* L, int n) {
             fatal(lua_tostring(L, -1));
         f = toproto(L, -1);
         for (i = 0; i < n; i++) {
-            f->p[i] = toproto(L, i - n - 1);
-            if (f->p[i]->sizeupvalues > 0)
-                f->p[i]->upvalues[0].instack = 0;
+            f->sub_p[i] = toproto(L, i - n - 1);
+            if (f->sub_p[i]->sizeupvalues > 0)
+                f->sub_p[i]->upvalues[0].instack = 0;
         }
         return f;
     }
@@ -169,7 +168,7 @@ static int pmain(lua_State* L) {
     }
     f = combine(L, argc);
     if (listing)
-        luaU_print(f, listing > 1);
+        PrintFunction(f, listing > 1 ? 1 : 0);
     if (dumping) {
         FILE* D = (output == NULL) ? stdout : fopen(output, "wb");
         if (D == NULL)
@@ -673,7 +672,7 @@ static void PrintCode(const Proto* f) {
             break;
         case OP_CLOSURE:
             printf("%d %d", a, bx);
-            printf(COMMENT "%p", VOID(f->p[bx]));
+            printf(COMMENT "%p", VOID(f->sub_p[bx]));
             break;
         case OP_VARARG:
             printf("%d %d", a, c);
@@ -701,9 +700,11 @@ static void PrintCode(const Proto* f) {
 }
 
 
+// TIP: 这个宏 还是挺有意思的
 #define SS(x) ((x == 1) ? "" : "s")
 #define S(x) (int)(x), SS(x)
 
+// TIP:
 static void PrintHeader(const Proto* f) {
     const char* s = f->source ? getstr(f->source) : "=?";
     if (*s == '@' || *s == '=')
@@ -747,11 +748,12 @@ static void PrintDebug(const Proto* f) {
     }
 }
 
+// TIP: PrintFunction
 static void PrintFunction(const Proto* f, int full) {
     int i, n = f->sizep;
     PrintHeader(f);
     PrintCode(f);
     if (full)
         PrintDebug(f);
-    for (i = 0; i < n; i++) PrintFunction(f->p[i], full);
+    for (i = 0; i < n; i++) PrintFunction(f->sub_p[i], full);
 }

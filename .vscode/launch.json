@@ -8,12 +8,16 @@
             "name": "(lldb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/ring",
+            "program": "${workspaceFolder}/src/luac",
             "args": [
-                "run",
-                "${workspaceFolder}/test/004-string/string-000.ring"
+                "-o",
+                "${workspaceFolder}/test/test-1.luac",
+                "${workspaceFolder}/test/test-1.lua"
+                // "-l",
+                // "-l",
+                // "${workspaceFolder}/test/test-1.luac"
             ],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,

@@ -18,7 +18,7 @@ Lua 命令行使用方法
 
 1. 指定 输出文件名, 输出字节码
    
-luac  -o ./test/test-1.luac ./test/test-1.lua
+./src/luac -o ./test/test-1.luac ./test/test-1.lua
 
 2. 解析字节码 (输入文件可以是Lua源码, 也可以是Lua字节码)
 
@@ -30,3 +30,14 @@ luac -l -l ./test/test-1.luac
 3. 执行  (输入文件可以是Lua源码, 也可以是Lua字节码)
 
 lua ./test/test-1.lua
+
+
+
+
+
+---------------------
+
+
+## lua 源码
+
+TIP: 都是 lizhenhu自己的标记

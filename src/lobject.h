@@ -606,7 +606,7 @@ typedef struct Proto {
     int            lastlinedefined; /* debug information  */
     TValue*        k;               /* constants used by the function */
     Instruction*   code;            /* opcodes */
-    struct Proto** p;               /* functions defined inside the function */
+    struct Proto** sub_p;           /* functions defined inside the function */
     Upvaldesc*     upvalues;        /* upvalue information */
     ls_byte*       lineinfo;        /* information about source lines (debug information) */
     AbsLineInfo*   abslineinfo;     /* idem */

@@ -7,3 +7,5 @@ lua
 luac
 
 *.luac
+
+luac.out
