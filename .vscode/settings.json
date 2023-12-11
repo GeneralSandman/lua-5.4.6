@@ -1,3 +1,11 @@
 {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "*.ring": "go",
+        "lstate.h": "c",
+        "lualib.h": "c",
+        "lauxlib.h": "c",
+        "string.h": "c",
+        "luaconf.h": "c"
+    }
 }
