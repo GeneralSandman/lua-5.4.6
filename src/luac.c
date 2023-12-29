@@ -69,6 +69,7 @@ static void usage(const char* message) {
 
 #define IS(s) (strcmp(argv[i], s) == 0)
 
+// TIP: 输入参数的处理
 static int doargs(int argc, char* argv[]) {
     int i;
     int version = 0;
@@ -721,7 +722,7 @@ static void PrintHeader(const Proto* f) {
            (int)(f->numparams), f->is_vararg ? "+" : "", SS(f->numparams),
            S(f->maxstacksize), S(f->sizeupvalues));
     printf("%d local%s, %d constant%s, %d function%s\n",
-           S(f->sizelocvars), S(f->sizek), S(f->sizep));
+           S(f->sizelocvars), S(f->sizek), S(f->size_sub_p));
 }
 
 static void PrintDebug(const Proto* f) {
@@ -750,7 +751,7 @@ static void PrintDebug(const Proto* f) {
 
 // TIP: PrintFunction
 static void PrintFunction(const Proto* f, int full) {
-    int i, n = f->sizep;
+    int i, n = f->size_sub_p;
     PrintHeader(f);
     PrintCode(f);
     if (full)

@@ -243,7 +243,7 @@ Proto* luaF_newproto(lua_State* L) {
     f->k               = NULL;
     f->sizek           = 0;
     f->sub_p           = NULL;
-    f->sizep           = 0;
+    f->size_sub_p      = 0;
     f->code            = NULL;
     f->sizecode        = 0;
     f->lineinfo        = NULL;
@@ -266,7 +266,7 @@ Proto* luaF_newproto(lua_State* L) {
 
 void luaF_freeproto(lua_State* L, Proto* f) {
     luaM_freearray(L, f->code, f->sizecode);
-    luaM_freearray(L, f->sub_p, f->sizep);
+    luaM_freearray(L, f->sub_p, f->size_sub_p);
     luaM_freearray(L, f->k, f->sizek);
     luaM_freearray(L, f->lineinfo, f->sizelineinfo);
     luaM_freearray(L, f->abslineinfo, f->sizeabslineinfo);

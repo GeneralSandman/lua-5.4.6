@@ -57,6 +57,7 @@
 typedef struct lua_State lua_State;
 
 
+// TIP: lua 数据类型定义
 /*
 ** basic types
 */

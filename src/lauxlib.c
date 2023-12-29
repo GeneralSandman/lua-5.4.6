@@ -1014,6 +1014,7 @@ LUALIB_API const char* luaL_gsub(lua_State* L, const char* s,
 }
 
 
+// TIP: 真正的内存分配函数
 static void* l_alloc(void* ud, void* ptr, size_t osize, size_t nsize) {
     (void)ud;
     (void)osize; /* not used */

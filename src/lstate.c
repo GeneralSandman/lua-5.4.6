@@ -360,6 +360,7 @@ LUA_API int lua_resetthread(lua_State* L) {
 }
 
 
+// TIP: lua_Alloc 内存分配函数
 LUA_API lua_State* lua_newstate(lua_Alloc f, void* ud) {
     int           i;
     lua_State*    L;

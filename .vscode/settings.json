@@ -2,10 +2,14 @@
     "editor.formatOnSave": true,
     "files.associations": {
         "*.ring": "go",
+        "*.cpp": "cpp",
         "lstate.h": "c",
         "lualib.h": "c",
         "lauxlib.h": "c",
         "string.h": "c",
-        "luaconf.h": "c"
+        "luaconf.h": "c",
+        "__locale": "c",
+        "lobject.h": "c",
+        "lzio.h": "c"
     }
 }
