@@ -24,7 +24,7 @@ Lua 命令行使用方法
 
 -l -l: 输出详细信息
 
-luac -l -l ./test/test-1.luac
+./src/luac -l -l ./test/test-1.luac
 
 
 3. 执行  (输入文件可以是Lua源码, 也可以是Lua字节码)

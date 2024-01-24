@@ -291,6 +291,7 @@ typedef union {
 ** Common Header for all collectable objects (in macro form, to be
 ** included in other objects)
 */
+// TIP:
 #define CommonHeader       \
     struct GCObject* next; \
     lu_byte          tt;   \
